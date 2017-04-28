@@ -16,6 +16,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "babelify": "^7.3.0",
     "gulp": "^3.9.1"
   }
