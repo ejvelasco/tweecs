@@ -29,9 +29,40 @@ const StreamTweet = React.createClass({
 		window.tweecs.headerHtml = componentDOMRepresentation.children[0].outerHTML;
 		window.snapterest.tweetHtml = componentDOMRepresentation.children[1].outerHTML;
 	},
+	componentWillReceiveProps(nextProps) {
+		console.log('[Tweecs] StreamTweet: 4. Running componentWillReceiveProps()'); 
+		 
+		let currentTweetLength = this.props.tweet.text.length; 
+		let nextTweetLength = nextProps.tweet.text.length; 
+		let isNumberOfCharactersIncreasing = (nextTweetLength > currentTweetLength); 
+		let headerText; 
+		 
+		if (isNumberOfCharactersIncreasing) { 
+			headerText = 'Number of characters is increasing'; 
+		} else { 
+		    headerText = 'Latest public photo from Twitter'; 
+		} 
+		 
+		this.setState({ 
+			numberOfCharactersIsIncreasing: isNumberOfCharactersIncreasing
+		   	headerText: headerText 
+		});  
+		window.tweecs.numberOfReceivedTweets++; 	
+	},
+	shouldComponentUpdate(nextProps, nextState) {
+		console.log('[Tweecs] StreamTweet: 5. Running shouldComponentUpdate()');
+		return(nextProps.tweet.text.length > 1);
+	},
+	componentWillUpdate(nextProps, nextState) {
+		console.log('[Tweecs] StreamTweet: 6. Running componentWillUpdate()');
+	},
+	componentDidUpdate(prevProps, prevState) {
+		console.log('[Tweecs] StreamTweet: 7. Running componentDidUpdate()');
+		window.tweecs.numberOfDisplayedTweets++;
+	},
 	componentWillUnmount() {
 		delete window.tweecs;
-	}
+	},
 	render(){
 		console.log('[Tweecs] StreamTweet: Running render()');
 		return{
