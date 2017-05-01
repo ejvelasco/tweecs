@@ -27017,551 +27017,1022 @@ yeast.decode = decode;
 module.exports = yeast;
 
 },{}],212:[function(require,module,exports){
-const React = require('react');
-const ReactDOM = require('react-dom');
-const Application = require('./components/Application.react');
+'use strict';
 
-ReactDOM.render(React.createElement(Application, null), document.getElementById('react-application'));
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Application = require('./components/Application.react');
+
+var _Application2 = _interopRequireDefault(_Application);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_Application2.default, null), document.getElementById('react-application'));
 
 },{"./components/Application.react":213,"react":191,"react-dom":61}],213:[function(require,module,exports){
-const React = require('react');
-const Stream = require('./Stream.react');
-const Collection = require('./Collection.react');
+'use strict';
 
-const Application = React.createClass({
-	displayName: 'Application',
-
-	getInitialState() {
-		return {
-			collectionTweets: {}
-		};
-	},
-	addTweetToCollection(tweet) {
-		let collectionTweets = this.state.collectionTweets;
-		collectionTweets[tweet.id] = tweet;
-		this.setState({
-			collectionTweets: collectionTweets
-		});
-	},
-	removeTweetFromCollection(tweet) {
-		let collectionTweets = this.state.collectionTweets;
-		delete collectionTweets[tweet.id];
-		this.setState({
-			collectionTweets: collectionTweets
-		});
-	},
-	removeAllTweetsFromCollection() {
-		this.setState({
-			collectionTweets: {}
-		});
-	},
-	render() {
-		return React.createElement(
-			'div',
-			{ className: 'container-fluid' },
-			React.createElement(
-				'div',
-				{ className: 'row' },
-				React.createElement(
-					'div',
-					{ className: 'col-md-4 text-center' },
-					React.createElement(Stream, { onAddTweetToCollection: this.addTweetToCollection })
-				),
-				React.createElement(
-					'div',
-					{ className: 'col-md-8' },
-					React.createElement(Collection, {
-						tweets: this.state.collectionTweets,
-						onRemoveTweetFromCollection: this.removeTweetFromCollection,
-						onRemoveAllTweetsFromCollection: this.removeAllTweetsFromCollection })
-				)
-			)
-		);
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = Application;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Stream = require('./Stream.react');
+
+var _Stream2 = _interopRequireDefault(_Stream);
+
+var _Collection = require('./Collection.react');
+
+var _Collection2 = _interopRequireDefault(_Collection);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Application = function (_React$Component) {
+    _inherits(Application, _React$Component);
+
+    function Application() {
+        _classCallCheck(this, Application);
+
+        var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this));
+
+        _this.state = {
+            collectionTweets: {}
+        };
+        return _this;
+    }
+
+    _createClass(Application, [{
+        key: 'addTweetToCollection',
+        value: function addTweetToCollection(tweet) {
+            var collectionTweets = this.state.collectionTweets;
+
+            collectionTweets[tweet.id] = tweet;
+
+            this.setState({
+                collectionTweets: collectionTweets
+            });
+        }
+    }, {
+        key: 'removeTweetFromCollection',
+        value: function removeTweetFromCollection(tweet) {
+            var collectionTweets = this.state.collectionTweets;
+
+            delete collectionTweets[tweet.id];
+
+            this.setState({
+                collectionTweets: collectionTweets
+            });
+        }
+    }, {
+        key: 'removeAllTweetsFromCollection',
+        value: function removeAllTweetsFromCollection() {
+            this.setState({
+                collectionTweets: {}
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'container-fluid' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-4 text-center' },
+                        _react2.default.createElement(_Stream2.default, { onAddTweetToCollection: this.addTweetToCollection.bind(this) })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-8' },
+                        _react2.default.createElement(_Collection2.default, {
+                            tweets: this.state.collectionTweets,
+                            onRemoveTweetFromCollection: this.removeTweetFromCollection.bind(this),
+                            onRemoveAllTweetsFromCollection: this.removeAllTweetsFromCollection.bind(this) })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Application;
+}(_react2.default.Component);
+
+exports.default = Application;
 
 },{"./Collection.react":215,"./Stream.react":220,"react":191}],214:[function(require,module,exports){
-const React = requrie('react');
+'use strict';
 
-const buttonStyle = {
-	margin: '10px 10px 10px 0'
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var buttonStyle = {
+    margin: '10px 10px 10px 0'
 };
 
-const Button = React.createClass({
-	displayName: 'Button',
+var Button = function (_React$Component) {
+    _inherits(Button, _React$Component);
 
-	render() {
-		return React.createElement(
-			'button',
-			{
-				className: 'btn btn-default',
-				style: buttonStyle,
-				onClick: this.props.handleClick },
-			this.props.label
-		);
-	}
-});
+    function Button() {
+        _classCallCheck(this, Button);
 
-module.exports = Button;
-
-},{}],215:[function(require,module,exports){
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const CollectionControls = require('./CollectionControls.react');
-const TweetList = require('./TweetList.react');
-const Header = require('./Header.react');
-
-const Collection = React.createClass({
-  displayName: 'Collection',
-
-  createHtmlMarkupStringOfTweetList() {
-    let htmlString = ReactDOMServer.renderToStaticMarkup(React.createElement(TweetList, { tweets: this.props.tweets }));
-    let htmlMarkup = {
-      html: htmlString
-    };
-    return JSON.stringify(htmlMarkup);
-  },
-  getListOfTweetIds() {
-    return Object.keys(this.props.tweets);
-  },
-  getNumberOfTweetsInCollection() {
-    return this.getListOfTweetIds().length;
-  },
-  render() {
-    let numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
-    if (numberOfTweetsInCollection > 0) {
-      let tweets = this.props.tweets;
-      let htmlMarkup = this.createHtmlMarkupStringOfTweetList();
-      let removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
-      let handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
-      return React.createElement(
-        'div',
-        null,
-        React.createElement(CollectionControls, {
-          numberOfTweetsInCollection: numberOfTweetsInCollection,
-          htmlMarkup: htmlMarkup,
-          onRemoveAllTweetsFromCollection: removeAllTweetsFromCollection }),
-        React.createElement(TweetList, {
-          tweets: tweets,
-          onRemoveTweetFromCollection: handleRemoveTweetFromCollection })
-      );
+        return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
     }
-    return React.createElement(Header, { text: 'Your collection is empty' });
-  }
+
+    _createClass(Button, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'button',
+                {
+                    className: 'btn btn-default',
+                    style: buttonStyle,
+                    onClick: this.props.handleClick },
+                this.props.label
+            );
+        }
+    }]);
+
+    return Button;
+}(_react2.default.Component);
+
+exports.default = Button;
+
+},{"react":191}],215:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = Collection;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _server = require('react-dom/server');
+
+var _server2 = _interopRequireDefault(_server);
+
+var _CollectionControls = require('./CollectionControls.react');
+
+var _CollectionControls2 = _interopRequireDefault(_CollectionControls);
+
+var _TweetList = require('./TweetList.react');
+
+var _TweetList2 = _interopRequireDefault(_TweetList);
+
+var _Header = require('./Header.react');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Collection = function (_Component) {
+    _inherits(Collection, _Component);
+
+    function Collection() {
+        _classCallCheck(this, Collection);
+
+        return _possibleConstructorReturn(this, (Collection.__proto__ || Object.getPrototypeOf(Collection)).apply(this, arguments));
+    }
+
+    _createClass(Collection, [{
+        key: 'createHtmlMarkupStringOfTweetList',
+        value: function createHtmlMarkupStringOfTweetList() {
+            var htmlString = _server2.default.renderToStaticMarkup(_react2.default.createElement(_TweetList2.default, { tweets: this.props.tweets }));
+
+            var htmlMarkup = {
+                html: htmlString
+            };
+
+            return JSON.stringify(htmlMarkup);
+        }
+    }, {
+        key: 'getListOfTweetIds',
+        value: function getListOfTweetIds() {
+            return Object.keys(this.props.tweets);
+        }
+    }, {
+        key: 'getNumberOfTweetsInCollection',
+        value: function getNumberOfTweetsInCollection() {
+            return this.getListOfTweetIds().length;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
+
+            if (numberOfTweetsInCollection > 0) {
+                var tweets = this.props.tweets;
+
+                var htmlMarkup = this.createHtmlMarkupStringOfTweetList();
+                var removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection.bind(this);
+                var handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection.bind(this);
+
+                return _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(_CollectionControls2.default, {
+                        numberOfTweetsInCollection: numberOfTweetsInCollection,
+                        htmlMarkup: htmlMarkup,
+                        onRemoveAllTweetsFromCollection: removeAllTweetsFromCollection }),
+                    _react2.default.createElement(_TweetList2.default, {
+                        tweets: tweets,
+                        onRemoveTweetFromCollection: handleRemoveTweetFromCollection })
+                );
+            }
+
+            return _react2.default.createElement(_Header2.default, { text: 'Your collection is empty.' });
+        }
+    }]);
+
+    return Collection;
+}(_react.Component);
+
+exports.default = Collection;
 
 },{"./CollectionControls.react":216,"./Header.react":219,"./TweetList.react":223,"react":191,"react-dom/server":62}],216:[function(require,module,exports){
-const React = require('react');
-const Header = require('./Header.react');
-const Button = require('./Button.react');
-const CollectionRenameForm = require('./CollectionRenameForm.react');
-const CollectionExportForm = require('./CollectionExportForm.react');
+'use strict';
 
-const CollectionControls = React.createClass({
-	displayName: 'CollectionControls',
-
-	getInitialState() {
-		return {
-			name: 'new',
-			isEditingName: false
-		};
-	},
-	getHeaderText() {
-		let numberOfTweetsInCollection = this.props.numberOfTweetsInCollection;
-		let text = numberOfTweetsInCollection;
-		if (numberOfTweetsInCollection === 1) {
-			text = text + 'tweet in your';
-		} else {
-			text = text + 'tweets in your';
-		}
-		return React.createElement(
-			'span',
-			null,
-			text,
-			' ',
-			React.createElement(
-				'strong',
-				null,
-				this.state.name
-			),
-			' collection'
-		);
-	},
-	toggleEditCollectionName() {
-		this.setState({
-			isEditingName: !this.state.isEditingName
-		});
-	},
-	setCollectionName() {
-		this.setState({
-			name: name,
-			isEditingName: false
-		});
-	},
-	render() {
-		if (this.state.isEditingName) {
-			return React.createElement(CollectionRenameForm, {
-				name: this.state.name,
-				onChangeCollectionName: this.setCollectionName,
-				onCancelCollectionNameChange: this.toggleEditCollectionName });
-		}
-		return React.createElement(
-			'div',
-			null,
-			React.createElement(Header, { text: this.getHeaderText() }),
-			React.createElement(Button, {
-				label: 'Rename collection',
-				handleClick: this.toggleEditCollectionName }),
-			React.createElement(Button, {
-				label: 'Empty collection',
-				handleClick: this.props.onRemoveAllTweetsFromCollection }),
-			React.createElement(CollectionExportForm, { htmlMarkup: this.props.htmlMarkup })
-		);
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = CollectionControls;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Header = require('./Header.react');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Button = require('./Button.react');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _CollectionRenameForm = require('./CollectionRenameForm.react');
+
+var _CollectionRenameForm2 = _interopRequireDefault(_CollectionRenameForm);
+
+var _CollectionExportForm = require('./CollectionExportForm.react');
+
+var _CollectionExportForm2 = _interopRequireDefault(_CollectionExportForm);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CollectionControls = function (_React$Component) {
+    _inherits(CollectionControls, _React$Component);
+
+    function CollectionControls() {
+        _classCallCheck(this, CollectionControls);
+
+        var _this = _possibleConstructorReturn(this, (CollectionControls.__proto__ || Object.getPrototypeOf(CollectionControls)).call(this));
+
+        _this.state = {
+            name: 'new',
+            isEditingName: false
+        };
+        return _this;
+    }
+
+    _createClass(CollectionControls, [{
+        key: 'getHeaderText',
+        value: function getHeaderText() {
+            var numberOfTweetsInCollection = this.props.numberOfTweetsInCollection;
+
+            var text = numberOfTweetsInCollection;
+
+            if (numberOfTweetsInCollection === 1) {
+                text += ' tweet in your';
+            } else {
+                text += ' tweets in your';
+            }
+
+            return _react2.default.createElement(
+                'span',
+                null,
+                text,
+                ' ',
+                _react2.default.createElement(
+                    'strong',
+                    null,
+                    this.state.name
+                ),
+                ' collection'
+            );
+        }
+    }, {
+        key: 'toggleEditCollectionName',
+        value: function toggleEditCollectionName() {
+            this.setState({
+                isEditingName: !this.state.isEditingName
+            });
+        }
+    }, {
+        key: 'setCollectionName',
+        value: function setCollectionName(name) {
+            this.setState({
+                name: name,
+                isEditingName: false
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            if (this.state.isEditingName) {
+                return _react2.default.createElement(_CollectionRenameForm2.default, {
+                    name: this.state.name,
+                    onChangeCollectionName: this.setCollectionName.bind(this),
+                    onCancelCollectionNameChange: this.toggleEditCollectionName.bind(this) });
+            }
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_Header2.default, { text: this.getHeaderText() }),
+                _react2.default.createElement(_Button2.default, {
+                    label: 'Rename collection',
+                    handleClick: this.toggleEditCollectionName.bind(this) }),
+                _react2.default.createElement(_Button2.default, {
+                    label: 'Empty collection',
+                    handleClick: this.props.onRemoveAllTweetsFromCollection }),
+                _react2.default.createElement(_CollectionExportForm2.default, { htmlMarkup: this.props.htmlMarkup })
+            );
+        }
+    }]);
+
+    return CollectionControls;
+}(_react2.default.Component);
+
+exports.default = CollectionControls;
 
 },{"./Button.react":214,"./CollectionExportForm.react":217,"./CollectionRenameForm.react":218,"./Header.react":219,"react":191}],217:[function(require,module,exports){
-const React = require('react');
+'use strict';
 
-const formStyle = {
-	display: 'inline-block'
-};
-const CollectionExportForm = React.createClass({
-	displayName: 'CollectionExportForm',
-
-	render() {
-		return React.createElement(
-			'form',
-			{ action: 'http://codepen.io/pen/define', method: 'POST', target: '_blank',
-				style: formStyle },
-			React.createElement('input', { type: 'hidden', name: 'data', value: this.props.htmlMarkup }),
-			React.createElement(
-				'button',
-				{ type: 'submit', className: 'btn btn-default' },
-				'Export as HTML'
-			)
-		);
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = CollectionExportForm;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var formStyle = {
+    display: 'inline-block'
+};
+
+var CollectionExportForm = function (_React$Component) {
+    _inherits(CollectionExportForm, _React$Component);
+
+    function CollectionExportForm() {
+        _classCallCheck(this, CollectionExportForm);
+
+        return _possibleConstructorReturn(this, (CollectionExportForm.__proto__ || Object.getPrototypeOf(CollectionExportForm)).apply(this, arguments));
+    }
+
+    _createClass(CollectionExportForm, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'form',
+                { action: 'http://codepen.io/pen/define', method: 'POST', target: '_blank', style: formStyle },
+                _react2.default.createElement('input', { type: 'hidden', name: 'data', value: this.props.htmlMarkup }),
+                _react2.default.createElement(
+                    'button',
+                    { type: 'submit', className: 'btn btn-default' },
+                    'Export as HTML'
+                )
+            );
+        }
+    }]);
+
+    return CollectionExportForm;
+}(_react2.default.Component);
+
+exports.default = CollectionExportForm;
 
 },{"react":191}],218:[function(require,module,exports){
-const React = require('react');
-const ReactDOM = require('react-dom');
-const Header = require('./Header.react');
-const Button = require('./Button.react');
+'use strict';
 
-const inputStyle = {
-	marginRight: '5px'
-};
-
-const CollectionRenameForm = React.createClass({
-	displayName: 'CollectionRenameForm',
-
-	getInitialState() {
-		return {
-			inputValue: this.props.name
-		};
-	},
-	setInputValue(inputValue) {
-		this.setState({
-			inputValue: inputValue
-		});
-	},
-	handleInputValueChange: function (event) {
-		let inputValue = event.target.value;
-		this.setInputValue(inputValue);
-	},
-	handleFormSubmit() {
-		event.preventDefault(event);
-		let collectionName = this.state.inputValue;
-		this.props.onChangeCollectionName(collectionName);
-	},
-	handleFormCancel(event) {
-		event.preventDefault();
-		let collectionName = this.props.name;
-		this.setInputValue(collectionName);
-		this.props.onCancelCollectionNameChange();
-	},
-	componentDidMount() {
-		this.refs.collectionName.focus();
-	},
-	render() {
-		return React.createElement(
-			'form',
-			{ className: 'form-inline', onSubmit: this.handleSubmit },
-			React.createElement(Header, { text: 'Collection name:' }),
-			React.createElement(
-				'div',
-				{ className: 'form-group' },
-				React.createElement('input', {
-					className: 'form-control',
-					style: inputStyle,
-					onChange: this.handleInputValueChange,
-					value: this.state.inputValue,
-					ref: 'collectionName' })
-			),
-			React.createElement(Button, { label: 'Change', handleClick: this.handleFormSubmit }),
-			React.createElement(Button, { label: 'Cancel', handleClick: this.handleFormCancel })
-		);
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = CollectionRenameForm;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Header = require('./Header.react');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Button = require('./Button.react');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var inputStyle = {
+    marginRight: '5px'
+};
+
+var CollectionRenameForm = function (_React$Component) {
+    _inherits(CollectionRenameForm, _React$Component);
+
+    function CollectionRenameForm() {
+        _classCallCheck(this, CollectionRenameForm);
+
+        var _this = _possibleConstructorReturn(this, (CollectionRenameForm.__proto__ || Object.getPrototypeOf(CollectionRenameForm)).call(this));
+
+        _this.state = {
+            inputValue: ''
+        };
+        return _this;
+    }
+
+    _createClass(CollectionRenameForm, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.setState({
+                inputValue: this.props.name
+            });
+        }
+    }, {
+        key: 'setInputValue',
+        value: function setInputValue(inputValue) {
+            this.setState({
+                inputValue: inputValue
+            });
+        }
+    }, {
+        key: 'handleInputValueChange',
+        value: function handleInputValueChange(event) {
+            var inputValue = event.target.value;
+            this.setInputValue(inputValue);
+        }
+    }, {
+        key: 'handleFormSubmit',
+        value: function handleFormSubmit(event) {
+            event.preventDefault();
+            var collectionName = this.state.inputValue;
+            this.props.onChangeCollectionName(collectionName);
+        }
+    }, {
+        key: 'handleFormCancel',
+        value: function handleFormCancel(event) {
+            event.preventDefault();
+            var collectionName = this.props.name;
+            this.setInputValue(collectionName);
+            this.props.onCancelCollectionNameChange();
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.refs.collectionName.focus();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'form',
+                { className: 'form-inline', onSubmit: this.handleFormSubmit.bind(this) },
+                _react2.default.createElement(_Header2.default, { text: 'Collection name:' }),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'form-group' },
+                    _react2.default.createElement('input', {
+                        className: 'form-control',
+                        style: inputStyle,
+                        onChange: this.handleInputValueChange.bind(this),
+                        value: this.state.inputValue,
+                        ref: 'collectionName' })
+                ),
+                _react2.default.createElement(_Button2.default, { label: 'Change', onClick: this.handleFormSubmit.bind(this) }),
+                _react2.default.createElement(_Button2.default, { label: 'Cancel', onClick: this.handleFormCancel.bind(this) })
+            );
+        }
+    }]);
+
+    return CollectionRenameForm;
+}(_react2.default.Component);
+
+exports.default = CollectionRenameForm;
 
 },{"./Button.react":214,"./Header.react":219,"react":191,"react-dom":61}],219:[function(require,module,exports){
-const react = require('react');
+'use strict';
 
-const headerStyle = {
-	fontSize: '16px',
-	fontWeight: '300',
-	display: 'inline-block',
-	margin: '20px 10px'
-};
-
-const header = React.createClass({
-	displayName: 'header',
-
-	getDefaultProps() {
-		return {
-			text: 'Default Header'
-		};
-	},
-	render() {
-		return React.createElement(
-			'h2',
-			{ style: headerStyle },
-			this.props.text
-		);
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = Header;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var headerStyle = {
+    fontSize: '16px',
+    fontWeight: '300',
+    display: 'inline-block',
+    margin: '20px 10px'
+};
+
+var Header = function (_React$Component) {
+    _inherits(Header, _React$Component);
+
+    function Header() {
+        _classCallCheck(this, Header);
+
+        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+    }
+
+    _createClass(Header, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'h2',
+                { style: headerStyle },
+                this.props.text
+            );
+        }
+    }]);
+
+    return Header;
+}(_react2.default.Component);
+
+Header.defaultProps = {
+    text: 'Default header'
+};
+
+exports.default = Header;
 
 },{"react":191}],220:[function(require,module,exports){
-const React = require('react');
-const SnapkiteStreamClient = require('snapkite-stream-client');
-const Streamtweet = require('./StreamTweet.react');
-const Header = require('./Header.react');
+'use strict';
 
-const Stream = React.createClass({
-	displayName: 'Stream',
-
-	getInitialState() {
-		return {
-			tweet: null
-		};
-	},
-	componentDidMount() {
-		SnapkiteStreamClient.initializeStream(this.handleNewTweet);
-	},
-	componentWillUnmount() {
-		SnapkiteStreamClient.destroyStream();
-	},
-	handleNewTweet: function (tweet) {
-		this.setState({
-			tweet: tweet
-		});
-	},
-	render() {
-		let tweet = this.state.tweet;
-		if (tweet) {
-			return React.createElement(StreamTweet, { tweet: tweet, onAddTweetToCollection: this.props.onAddTweetToCollection });
-		}
-		return React.createElement(Header, { text: 'Waiting for public photos from Twitter...' });
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = Stream;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _StreamTweet = require('./StreamTweet.react');
+
+var _StreamTweet2 = _interopRequireDefault(_StreamTweet);
+
+var _Header = require('./Header.react');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _snapkiteStreamClient = require('snapkite-stream-client');
+
+var _snapkiteStreamClient2 = _interopRequireDefault(_snapkiteStreamClient);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Stream = function (_React$Component) {
+    _inherits(Stream, _React$Component);
+
+    function Stream() {
+        _classCallCheck(this, Stream);
+
+        var _this = _possibleConstructorReturn(this, (Stream.__proto__ || Object.getPrototypeOf(Stream)).call(this));
+
+        _this.state = {
+            tweet: null
+        };
+        return _this;
+    }
+
+    _createClass(Stream, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            _snapkiteStreamClient2.default.initializeStream(this.handleNewTweet.bind(this));
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            _snapkiteStreamClient2.default.destroyStream();
+        }
+    }, {
+        key: 'handleNewTweet',
+        value: function handleNewTweet(tweet) {
+            this.setState({
+                tweet: tweet
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var tweet = this.state.tweet;
+
+
+            if (tweet) {
+                return _react2.default.createElement(_StreamTweet2.default, {
+                    tweet: tweet,
+                    onAddTweetToCollection: this.props.onAddTweetToCollection });
+            }
+
+            return _react2.default.createElement(_Header2.default, { text: 'Waiting for public photos from Twitter...' });
+        }
+    }]);
+
+    return Stream;
+}(_react2.default.Component);
+
+exports.default = Stream;
 
 },{"./Header.react":219,"./StreamTweet.react":221,"react":191,"snapkite-stream-client":192}],221:[function(require,module,exports){
-const React = require('react');
-const ReactDOM = require('react-dom');
-const Header = require('./Header.react');
-const Tweet = require('./Tweet.react');
+'use strict';
 
-const StreamTweet = React.createClass({
-	displayName: 'StreamTweet',
-
-	getInitialState() {
-		console.log('[Tweecs] StreamTweet: 1.Running getInitialState()');
-		return {
-			numberOfCharactersIsIncreasing: null,
-			headerText: null
-		};
-	},
-	componentWillMount() {
-		console.log('[Tweecs] StreamTweet: 2. Running componentWillMount()');
-		this.setState({
-			numberOfCharactersIsIncreasing: true,
-			headerText: 'Latest public photo from Twitter'
-		});
-		//remove in production - demo purposes only
-		window.tweecs = {
-			numberOfReceivedTweets: 1,
-			numberOfDisplayedTweets: 1
-		};
-	},
-	componentDidMount() {
-		console.log('[Tweecs] StreamTweet: 3. Running componentDidMount()');
-		let componentDOMRepresentation = ReactDOM.findDOMNode(this);
-		window.tweecs.headerHtml = componentDOMRepresentation.children[0].outerHTML;
-		window.snapterest.tweetHtml = componentDOMRepresentation.children[1].outerHTML;
-	},
-	componentWillReceiveProps(nextProps) {
-		console.log('[Tweecs] StreamTweet: 4. Running componentWillReceiveProps()');
-
-		let currentTweetLength = this.props.tweet.text.length;
-		let nextTweetLength = nextProps.tweet.text.length;
-		let isNumberOfCharactersIncreasing = nextTweetLength > currentTweetLength;
-		let headerText;
-
-		if (isNumberOfCharactersIncreasing) {
-			headerText = 'Number of characters is increasing';
-		} else {
-			headerText = 'Latest public photo from Twitter';
-		}
-
-		this.setState({
-			numberOfCharactersIsIncreasing: isNumberOfCharactersIncreasing,
-			headerText: headerText
-		});
-		window.tweecs.numberOfReceivedTweets++;
-	},
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log('[Tweecs] StreamTweet: 5. Running shouldComponentUpdate()');
-		return nextProps.tweet.text.length > 1;
-	},
-	componentWillUpdate(nextProps, nextState) {
-		console.log('[Tweecs] StreamTweet: 6. Running componentWillUpdate()');
-	},
-	componentDidUpdate(prevProps, prevState) {
-		console.log('[Tweecs] StreamTweet: 7. Running componentDidUpdate()');
-		window.tweecs.numberOfDisplayedTweets++;
-	},
-	componentWillUnmount() {
-		delete window.tweecs;
-	},
-	render() {
-		console.log('[Tweecs] StreamTweet: Running render()');
-		return React.createElement(
-			'section',
-			null,
-			React.createElement(Header, { text: this.state.headerText }),
-			React.createElement(Tweet, {
-				tweet: this.props.tweet,
-				onImageClick: this.props.onAddTweetToCollection })
-		);
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = StreamTweet;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Header = require('./Header.react');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Tweet = require('./Tweet.react');
+
+var _Tweet2 = _interopRequireDefault(_Tweet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StreamTweet = function (_React$Component) {
+    _inherits(StreamTweet, _React$Component);
+
+    function StreamTweet() {
+        _classCallCheck(this, StreamTweet);
+
+        var _this = _possibleConstructorReturn(this, (StreamTweet.__proto__ || Object.getPrototypeOf(StreamTweet)).call(this));
+
+        _this.state = {
+            numberOfCharactersIsIncreasing: null,
+            headerText: null
+        };
+        return _this;
+    }
+
+    _createClass(StreamTweet, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.setState({
+                numberOfCharactersIsIncreasing: true,
+                headerText: 'Latest public photo from Twitter'
+            });
+
+            window.tweecs = {
+                numberOfReceivedTweets: 1,
+                numberOfDisplayedTweets: 1
+            };
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var componentDOMRepresentation = _reactDom2.default.findDOMNode(this);
+
+            window.tweecs.headerHtml = componentDOMRepresentation.children[0].outerHTML;
+            window.tweecs.tweetHtml = componentDOMRepresentation.children[1].outerHTML;
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            var currentTweetLength = this.props.tweet.text.length;
+            var nextTweetLength = nextProps.tweet.text.length;
+            var numberOfCharactersIsIncreasing = nextTweetLength > currentTweetLength;
+            var headerText = void 0;
+
+            if (numberOfCharactersIsIncreasing) {
+                headerText = 'Number of characters is increasing';
+            } else {
+                headerText = 'Latest public photo from Twitter';
+            }
+
+            this.setState({
+                numberOfCharactersIsIncreasing: numberOfCharactersIsIncreasing,
+                headerText: headerText
+            });
+
+            window.tweecs.numberOfReceivedTweets++;
+        }
+    }, {
+        key: 'shouldComponentUpdate',
+        value: function shouldComponentUpdate(nextProps, nextState) {
+            return nextProps.tweet.text.length > 1;
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            window.tweecs.numberOfDisplayedTweets++;
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            delete window.tweecs;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'section',
+                null,
+                _react2.default.createElement(_Header2.default, { text: this.state.headerText }),
+                _react2.default.createElement(_Tweet2.default, {
+                    tweet: this.props.tweet,
+                    onImageClick: this.props.onAddTweetToCollection })
+            );
+        }
+    }]);
+
+    return StreamTweet;
+}(_react2.default.Component);
+
+exports.default = StreamTweet;
 
 },{"./Header.react":219,"./Tweet.react":222,"react":191,"react-dom":61}],222:[function(require,module,exports){
-const React = require('react');
+'use strict';
 
-const tweetStyle = {
-	position: 'relative',
-	display: 'inline-block',
-	width: '300px;',
-	height: '400px',
-	margin: '10px'
-};
-const imageStyle = {
-	maxHeight: '400px',
-	boxShadow: '0px 1px 1px 0px #aaa',
-	border: '1px solid #fff'
-};
-
-const Tweet = React.createClass({
-	displayName: 'Tweet',
-
-	propTypes: {
-		tweet: function (properties, propertyName, componentName) {
-			let tweet = properties[propertyName];
-			if (!tweet) {
-				return new Error('Tweet must be set.');
-			}
-			if (!tweet.media) {
-				return new Error('Tweet must have image.');
-			}
-		},
-		onImageClick: React.PropTypes.func
-	},
-	handleImageClick() {
-		let tweet = this.props.tweet;
-		let onImageClick = this.props.onImageClick;
-
-		if (onImageClick) {
-			onImageClick(tweet);
-		}
-	},
-	render() {
-		let tweet = this.props.tweet;
-		let tweetMediaUrl = tweet.media[0].url;
-		return React.createElement(
-			'div',
-			{ style: tweetStyle },
-			React.createElement('img', { src: tweetMediaUrl, onClick: this.handleImageClick, style: imageStyle })
-		);
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = Tweet;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var tweetStyle = {
+    position: 'relative',
+    display: 'inline-block',
+    width: '300px',
+    height: '400px',
+    margin: '10px'
+};
+
+var imageStyle = {
+    maxHeight: '400px',
+    boxShadow: '0px 1px 1px 0px #aaa',
+    border: '1px solid #fff'
+};
+
+var Tweet = function (_React$Component) {
+    _inherits(Tweet, _React$Component);
+
+    function Tweet() {
+        _classCallCheck(this, Tweet);
+
+        return _possibleConstructorReturn(this, (Tweet.__proto__ || Object.getPrototypeOf(Tweet)).apply(this, arguments));
+    }
+
+    _createClass(Tweet, [{
+        key: 'handleImageClick',
+        value: function handleImageClick() {
+            var _props = this.props,
+                tweet = _props.tweet,
+                onImageClick = _props.onImageClick;
+
+
+            if (onImageClick) {
+                onImageClick(tweet);
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var tweet = this.props.tweet;
+
+            var tweetMediaUrl = tweet.media[0].url;
+
+            return _react2.default.createElement(
+                'div',
+                { style: tweetStyle },
+                _react2.default.createElement('img', { src: tweetMediaUrl, onClick: this.handleImageClick.bind(this), style: imageStyle })
+            );
+        }
+    }]);
+
+    return Tweet;
+}(_react2.default.Component);
+
+Tweet.propTypes = {
+    tweet: function tweet(properties, propertyName, componentName) {
+        var tweet = properties[propertyName];
+
+        if (!tweet) {
+            return new Error('Tweet must be set!');
+        }
+
+        if (!tweet.media) {
+            return new Error('Tweet must have an image.');
+        }
+    },
+
+
+    onImageClick: _react2.default.PropTypes.func
+};
+
+exports.default = Tweet;
 
 },{"react":191}],223:[function(require,module,exports){
-const React = require('react');
-const Tweet = require('./Tweet.react.js');
+'use strict';
 
-const listStyle = {
-	padding: '0'
-};
-
-const listItemStyle = {
-	display: 'inline-block',
-	listStyle: 'none'
-};
-
-const Tweetlist = React.createClass({
-	displayName: 'Tweetlist',
-
-	getListOfTweetIds() {
-		return Object.keys(this.props.tweets);
-	},
-	getTweetElement(tweetId) {
-		let tweet = this.props.tweets[tweetId];
-		let handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
-		let tweetElement;
-		if (handleRemoveTweetFromCollection) {
-			tweetElement = React.createElement(Tweet, {
-				tweet: tweet,
-				onImageClick: handleRemoveTweetFromCollection });
-		} else {
-			tweetElement = React.createElement(Tweet, { tweet: tweet });
-		}
-		return React.createElement(
-			'li',
-			{ style: listItemStyle, key: tweet.id },
-			tweetElement
-		);
-	},
-	render() {
-		let tweetElements = this.getListOfTweetIds().map(this.getTweetElement);
-		return React.createElement(
-			'ul',
-			{ style: listStyle },
-			tweetElements
-		);
-	}
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-module.exports = TweetList;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-},{"./Tweet.react.js":222,"react":191}]},{},[212]);
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Tweet = require('./Tweet.react');
+
+var _Tweet2 = _interopRequireDefault(_Tweet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var listStyle = {
+    padding: '0'
+};
+
+var listItemStyle = {
+    display: 'inline-block',
+    listStyle: 'none'
+};
+
+var TweetList = function (_React$Component) {
+    _inherits(TweetList, _React$Component);
+
+    function TweetList() {
+        _classCallCheck(this, TweetList);
+
+        return _possibleConstructorReturn(this, (TweetList.__proto__ || Object.getPrototypeOf(TweetList)).apply(this, arguments));
+    }
+
+    _createClass(TweetList, [{
+        key: 'getListOfTweetIds',
+        value: function getListOfTweetIds() {
+            return Object.keys(this.props.tweets);
+        }
+    }, {
+        key: 'getTweetElement',
+        value: function getTweetElement(tweetId) {
+            var tweet = this.props.tweets[tweetId];
+            var handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
+            var tweetElement = void 0;
+
+            if (handleRemoveTweetFromCollection) {
+                tweetElement = _react2.default.createElement(_Tweet2.default, {
+                    tweet: tweet,
+                    onImageClick: handleRemoveTweetFromCollection });
+            } else {
+                tweetElement = _react2.default.createElement(_Tweet2.default, { tweet: tweet });
+            }
+
+            return _react2.default.createElement(
+                'li',
+                { style: listItemStyle, key: tweet.id },
+                tweetElement
+            );
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var tweetElements = this.getListOfTweetIds().map(this.getTweetElement.bind(this));
+            return _react2.default.createElement(
+                'ul',
+                { listStyle: listStyle },
+                tweetElements
+            );
+        }
+    }]);
+
+    return TweetList;
+}(_react2.default.Component);
+
+exports.default = TweetList;
+
+},{"./Tweet.react":222,"react":191}]},{},[212]);
