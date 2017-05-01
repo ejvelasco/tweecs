@@ -37,7 +37,7 @@ const CollectionRenameForm = React.createClass({
 		this.refs.collectionName.focus();
 	},
 	render(){
-		return{
+		return(
 			<form className="form-inline" onSubmit={this.handleSubmit}> 
 			    <Header text="Collection name:" /> 
 			    <div className="form-group"> 
@@ -51,7 +51,7 @@ const CollectionRenameForm = React.createClass({
 			    <Button label="Change" handleClick={this.handleFormSubmit} /> 
 			    <Button label="Cancel" handleClick={this.handleFormCancel} /> 
 			</form> 
-		};
+		);
 	}
 });
 

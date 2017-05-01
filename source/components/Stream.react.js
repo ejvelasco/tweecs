@@ -23,13 +23,13 @@ const Stream = React.createClass({
 	render(){
 		let tweet = this.state.tweet;
 		if(tweet){
-			return{ 
+			return( 
 				<StreamTweet tweet={tweet} onAddTweetToCollection={this.props.onAddTweetToCollection} /> 
-			};
+			);
 		}
-		return {
+		return (
 			<Header text="Waiting for public photos from Twitter..." /> 
-		};
+		);
 	}
 });
 

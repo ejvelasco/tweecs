@@ -2,7 +2,7 @@ const React = require('react');
 const Tweet = require('./Tweet.react.js');
 
 const listStyle = {
-	padding: '0';
+	padding: '0'
 };
 
 const listItemStyle = {
@@ -31,11 +31,11 @@ const Tweetlist = React.createClass({
 	}, 
 	render(){
 		let tweetElements = this.getListOfTweetIds().map(this.getTweetElement);
-		return{
+		return(
 			<ul style={listStyle}> 
 			    {tweetElements} 
 			</ul> 
-		};
+		);
 	}
 });
 

@@ -44,7 +44,7 @@ const StreamTweet = React.createClass({
 		} 
 		 
 		this.setState({ 
-			numberOfCharactersIsIncreasing: isNumberOfCharactersIncreasing
+			numberOfCharactersIsIncreasing: isNumberOfCharactersIncreasing,
 		   	headerText: headerText 
 		});  
 		window.tweecs.numberOfReceivedTweets++; 	
@@ -65,14 +65,14 @@ const StreamTweet = React.createClass({
 	},
 	render(){
 		console.log('[Tweecs] StreamTweet: Running render()');
-		return{
+		return(
 			<section> 
 			    <Header text={this.state.headerText} /> 
 			    <Tweet 
 			      tweet={this.props.tweet} 
 			      onImageClick={this.props.onAddTweetToCollection} /> 
 			</section> 
-		};
+		);
 	}
 });
 

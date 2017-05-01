@@ -1,6 +1,6 @@
 const React = require('react');
 const Header = require('./Header.react');
-const Button = require('/Button.react');
+const Button = require('./Button.react');
 const CollectionRenameForm = require('./CollectionRenameForm.react');
 const CollectionExportForm = require('./CollectionExportForm.react');
 
@@ -19,11 +19,11 @@ const CollectionControls = React.createClass({
 		} else{
 			text = text + 'tweets in your';
 		}
-		return{
+		return(
 			<span> 
 				{text} <strong>{this.state.name}</strong> collection 
 			</span> 
-		};
+		);
 	},
 	toggleEditCollectionName(){
 		this.setState({
@@ -38,14 +38,14 @@ const CollectionControls = React.createClass({
 	},
 	render(){
 		if(this.state.isEditingName){
-			return{
+			return(
 				<CollectionRenameForm 
 				    name={this.state.name} 
 				    onChangeCollectionName={this.setCollectionName} 
 				    onCancelCollectionNameChange={this.toggleEditCollectionName} /> 
-			};
+			);
 		}
-		return{
+		return(
 			<div> 
 			    <Header text={this.getHeaderText()} /> 
 			 	<Button 
@@ -56,7 +56,7 @@ const CollectionControls = React.createClass({
 			        handleClick={this.props.onRemoveAllTweetsFromCollection} /> 
 			    <CollectionExportForm htmlMarkup={this.props.htmlMarkup} /> 
 			</div> 
-		};
+		);
 	}
 });
 

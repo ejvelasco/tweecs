@@ -6,12 +6,12 @@ const buttonStyle = {
 
 const Button = React.createClass({
 	render(){
-		return{
+		return(
 			<button 
 			    className="btn btn-default" 
 			    style={buttonStyle} 
 			    onClick={this.props.handleClick}>{this.props.label}</button> 
-		};
+		);
 	}
 });
 

@@ -28,7 +28,7 @@ const Application = React.createClass({
 		});
 	},
 	render(){
-		return {
+		return (
 			<div className="container-fluid"> 	  
 			    <div className="row"> 
 			        <div className="col-md-4 text-center"> 
@@ -42,7 +42,7 @@ const Application = React.createClass({
 			        </div> 
 			    </div>   
 			</div> 
-		};
+		);
 	}
 });
 
