@@ -1,46 +1,57 @@
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const CollectionControls = require('./CollectionControls.react');
-const TweetList = require('./TweetList.react');
-const Header = require('./Header.react');
+import React, { Component } from 'react';
+import ReactDOMServer from 'react-dom/server';
+import CollectionControls from './CollectionControls.react';
+import TweetList from './TweetList.react';
+import Header from './Header.react';
 
-const Collection = React.createClass({
-  createHtmlMarkupStringOfTweetList() {
-    let htmlString = ReactDOMServer.renderToStaticMarkup(
-      <TweetList tweets={this.props.tweets} />
-    );
-    let htmlMarkup = {
-      html: htmlString
-    };
-    return JSON.stringify(htmlMarkup);
-  },
-  getListOfTweetIds() {
-    return Object.keys(this.props.tweets);
-  },
-  getNumberOfTweetsInCollection() {
-    return this.getListOfTweetIds().length;
-  },
-  render() {
-    let numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
-    if (numberOfTweetsInCollection > 0) {
-      let tweets = this.props.tweets;
-      let htmlMarkup = this.createHtmlMarkupStringOfTweetList();
-      let removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
-      let handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
-      return (
-        <div>
-          <CollectionControls
-            numberOfTweetsInCollection={numberOfTweetsInCollection}
-            htmlMarkup={htmlMarkup}
-            onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection} />
-          <TweetList
-            tweets={tweets}
-            onRemoveTweetFromCollection={handleRemoveTweetFromCollection} />
-        </div>
-      );
+class Collection extends Component {
+    createHtmlMarkupStringOfTweetList() {
+        const htmlString = ReactDOMServer.renderToStaticMarkup(
+            <TweetList tweets={this.props.tweets} />
+        );
+
+        const htmlMarkup = {
+            html: htmlString
+        };
+
+        return JSON.stringify(htmlMarkup);
     }
-    return <Header text="Your collection is empty" />;
-  }
-});
 
-module.exports = Collection;
+    getListOfTweetIds() {
+        return Object.keys(this.props.tweets);
+    }
+
+    getNumberOfTweetsInCollection() {
+        return this.getListOfTweetIds().length;
+    }
+
+    render() {
+        const numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
+
+        if (numberOfTweetsInCollection > 0) {
+            const { tweets } = this.props;
+            const htmlMarkup = this.createHtmlMarkupStringOfTweetList();
+            const removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection.bind(this);
+            const handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection.bind(this);
+
+            return (
+                <div>
+                    <CollectionControls
+                        numberOfTweetsInCollection={numberOfTweetsInCollection}
+                        htmlMarkup={htmlMarkup}
+                        onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection} />
+
+                    <TweetList
+                        tweets={tweets}
+                        onRemoveTweetFromCollection={handleRemoveTweetFromCollection} />
+                </div>
+            );
+        }
+
+        return (
+            <Header text="Your collection is empty." />
+        );
+    }
+}
+
+export default Collection;
